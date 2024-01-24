@@ -2,11 +2,11 @@ export async function getUserId(request: Request) {
   const token = request.headers.get('authorization');
 
   if (!token) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    throw new Error('Unauthorized');
   }
 
   if (!token.startsWith('Bearer ')) {
-    return Response.json({ error: 'Not a bearer token' }, { status: 401 });
+    throw new Error('Not a bearer token');
   }
 
   console.log('Bearer token', token);
@@ -17,7 +17,7 @@ export async function getUserId(request: Request) {
   });
 
   if (!res.ok) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    throw new Error('Unauthorized');
   }
 
   const body = await res.json();

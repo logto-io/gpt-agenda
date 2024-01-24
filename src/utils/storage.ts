@@ -1,5 +1,5 @@
 import { kv } from "@vercel/kv";
-import { getUserId } from "./authentication";
+import { getUserId } from "./user";
 
 export type Item = {
   id: string;
@@ -7,11 +7,13 @@ export type Item = {
   text: string;
 }
 
+export const getItemsByUserId = async (userId: string): Promise<Item[]> => {
+  return (await kv.get<Item[]>(`items:${userId}`)) ?? [];
+}
+
 export const getItems = async (request: Request): Promise<Item[]> => {
   const userId = await getUserId(request);
-  const items = await kv.get<Item[]>(`items:${userId}`);
-
-  return items ?? [];
+  return getItemsByUserId(userId);
 }
 
 export const setItems = async (request: Request, items: Item[]): Promise<void> => {
