@@ -36,12 +36,12 @@ export const signIn = async () => {
 };
 
 export const handleSignIn = async (searchParams: Record<string, string>) => {
-  // Convert searchParams object into a query string.
-  const search = new URLSearchParams(searchParams).toString();
+  const url = new URL('/callback', config.baseUrl);
+  url.search = new URLSearchParams(searchParams).toString();
 
   const newCookie = await logtoClient.handleSignInCallback(
     getCookie(),
-    new URL(`/callback?${search}`, config.baseUrl).href
+    url.href
   );
 
   setCookies(newCookie);
@@ -49,4 +49,12 @@ export const handleSignIn = async (searchParams: Record<string, string>) => {
 
 export const getLogtoContext = async () => {
   return await logtoClient.getLogtoContext(getCookie(), { getAccessToken: true });
+};
+
+export const signOut = async () => {
+  const url = await logtoClient.handleSignOut(getCookie());
+
+  setCookies('');
+
+  return url;
 };

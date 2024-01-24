@@ -22,7 +22,7 @@ export default function Agenda({ initialData }: { initialData?: Item[] }) {
   }, [data, isValidating]);
 
   return (
-    <>
+    <section className="mb-2">
       <h1 className="text-xl font-semibold">Your agenda</h1>
       <ol className="list-decimal p-8">
         {data?.map((item) => (
@@ -36,6 +36,6 @@ export default function Agenda({ initialData }: { initialData?: Item[] }) {
           <p>Updated at: {date.toLocaleString()}</p>
         </div>
       )}
-    </>
+    </section>
   );
 }
