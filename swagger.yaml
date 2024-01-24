@@ -1,0 +1,145 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: GPT agenda
+  license:
+    name: MIT
+servers:
+  - url: https://petstore.swagger.io/v1
+paths:
+  /api/items:
+    get:
+      summary: List all items in the agenda
+      operationId: listItems
+      tags:
+        - items
+      responses:
+        '200':
+          description: An array of items
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Items"
+
+    post:
+      summary: Create an item in the agenda
+      operationId: createItems
+      tags:
+        - items
+      requestBody:
+        description: Item to add to the agenda
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateItem"
+      responses:
+        '201':
+          description: Created
+
+  /api/items/{id}:
+    get:
+      summary: Get an item by id
+      operationId: getItemById
+      tags:
+        - items
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the item to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+        '404':
+          description: Item not found
+
+    patch:
+      summary: Update an item by id
+      operationId: updateItemById
+      tags:
+        - items
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the item to update
+          schema:
+            type: string
+      requestBody:
+        description: Item to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateItem"
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+        '404':
+          description: Item not found
+
+    delete:
+      summary: Delete an item by id
+      operationId: deleteItemById
+      tags:
+        - items
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the item to delete
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: Item not found
+
+components:
+  schemas:
+    Item:
+      type: object
+      required:
+        - id
+        - date
+        - text
+      properties:
+        id:
+          type: string
+        date:
+          type: string
+        text:
+          type: string
+    Items:
+      type: array
+      items:
+        $ref: "#/components/schemas/Item"
+    CreateItem:
+      type: object
+      required:
+        - date
+        - text
+      properties:
+        date:
+          type: string
+        text:
+          type: string
+    UpdateItem:
+      type: object
+      properties:
+        date:
+          type: string
+        text:
+          type: string
