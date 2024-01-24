@@ -27,7 +27,7 @@ const getCookie = () => {
 export const signIn = async () => {
   const { url, newCookie } = await logtoClient.handleSignIn(
     getCookie(),
-    `${config.baseUrl}/callback`
+    new URL('/callback', config.baseUrl).href
   );
 
   setCookies(newCookie);
@@ -41,7 +41,7 @@ export const handleSignIn = async (searchParams: Record<string, string>) => {
 
   const newCookie = await logtoClient.handleSignInCallback(
     getCookie(),
-    `${config.baseUrl}/callback?${search}`
+    new URL(`/callback?${search}`, config.baseUrl).href
   );
 
   setCookies(newCookie);

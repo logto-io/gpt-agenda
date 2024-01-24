@@ -27,7 +27,7 @@ export default function Agenda({ initialData }: { initialData?: Item[] }) {
       <ol className="list-decimal p-8">
         {data?.map((item) => (
           <li key={item.id} className="p-1">
-            {item.text}
+            {new Date(item.date).toLocaleString()}: {item.text}
           </li>
         ))}
       </ol>
