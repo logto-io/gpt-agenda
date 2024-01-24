@@ -8,14 +8,14 @@ export type Item = {
 }
 
 export const getItems = async (request: Request): Promise<Item[]> => {
-  const userId = getUserId(request);
+  const userId = await getUserId(request);
   const items = await kv.get<Item[]>(`items:${userId}`);
 
   return items ?? [];
 }
 
 export const setItems = async (request: Request, items: Item[]): Promise<void> => {
-  const userId = getUserId(request);
+  const userId = await getUserId(request);
   await kv.set(`items:${userId}`, items);
 }
 

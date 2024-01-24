@@ -9,6 +9,7 @@ export async function getUserId(request: Request) {
     return Response.json({ error: 'Not a bearer token' }, { status: 401 });
   }
 
+  console.log('Bearer token', token);
   const res = await fetch(new URL('oidc/me', process.env.LOGTO_ENDPOINT), {
     headers: {
       authorization: token,
