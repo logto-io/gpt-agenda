@@ -5,9 +5,9 @@ info:
   license:
     name: MIT
 servers:
-  - url: https://petstore.swagger.io/v1
+  - url: https://gpt-agenda.vercel.app/api
 paths:
-  /api/items:
+  /items:
     get:
       summary: List all items in the agenda
       operationId: listItems
@@ -37,7 +37,7 @@ paths:
         '201':
           description: Created
 
-  /api/items/{id}:
+  /items/{id}:
     get:
       summary: Get an item by id
       operationId: getItemById
