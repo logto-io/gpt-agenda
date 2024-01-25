@@ -35,13 +35,9 @@ export const signIn = async () => {
   return url;
 };
 
-export const handleSignIn = async (searchParams: Record<string, string>) => {
+export const handleSignIn = async (searchParams: URLSearchParams) => {
   const url = new URL('/callback', config.baseUrl);
-  console.log('1', url.href);
-
-  url.search = new URLSearchParams(searchParams).toString();
-
-  console.log('2', url.href);
+  url.search = searchParams.toString();
 
   const newCookie = await logtoClient.handleSignInCallback(
     getCookie(),
