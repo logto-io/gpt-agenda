@@ -5,7 +5,7 @@ info:
   license:
     name: MIT
 servers:
-  - url: https://gpt-agenda.logto.dev/api
+  - url: https://gpt-agenda.fordemo.app/api
 paths:
   /items:
     get:

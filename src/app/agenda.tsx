@@ -24,10 +24,17 @@ export default function Agenda({ initialData }: { initialData?: Item[] }) {
   return (
     <section className="mb-2">
       <h1 className="text-xl font-semibold">Your agenda</h1>
-      <ol className="list-decimal p-8">
+      <p className="text-gray-400 text-sm mt-2 mb-4">
+        Interact with the{' '}
+        <a className="text-blue-600 hover:underline" href="https://chat.openai.com/g/g-gThGKWoMB-agenda-assistant-by-logto" target="_blank" rel="noopener">
+          Agenda Assistant
+        </a>{' '}
+        GPT and see the results here.
+      </p>
+      <ol className="list-decimal p-2 ml-4 mb-4">
         {data?.map((item) => (
           <li key={item.id} className="p-1">
-            {new Date(item.date).toLocaleString()}: {item.text}
+            {new Date(item.date).toLocaleDateString()}: {item.text}
           </li>
         ))}
       </ol>

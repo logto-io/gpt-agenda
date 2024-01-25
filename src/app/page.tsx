@@ -11,7 +11,19 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-start p-24">
       {isAuthenticated && <Agenda initialData={initialData} />}
-      <div>{isAuthenticated ? <SignOut /> : <SignIn />}</div>
+      {!isAuthenticated && (
+        <>
+          <h1 className="text-xl font-bold">GPT Agenda</h1>
+          <p className="text-gray-400 text-sm mt-2 mb-4">
+            This is a demo app that shows the agenda of the user. Check out the{' '}
+            <a className="text-blue-600 hover:underline" href="https://blog.logto.io/gpt-action-oauth/" target="_blank" rel="noopener">
+              blog post
+            </a>{' '}
+            for more information.
+          </p>
+        </>
+      )}
+      <div className="mt-2">{isAuthenticated ? <SignOut /> : <SignIn />}</div>
     </main>
   );
 }
