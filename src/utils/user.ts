@@ -1,12 +1,18 @@
+export class AuthenticationError extends Error {
+  constructor(message = 'Unauthorized') {
+    super(message);
+  }
+}
+
 export async function getUserId(request: Request) {
   const token = request.headers.get('authorization');
 
   if (!token) {
-    throw new Error('Unauthorized');
+    throw new AuthenticationError();
   }
 
   if (!token.startsWith('Bearer ')) {
-    throw new Error('Not a bearer token');
+    throw new AuthenticationError('Not a bearer token');
   }
 
   console.log('Bearer token', token);
@@ -17,7 +23,7 @@ export async function getUserId(request: Request) {
   });
 
   if (!res.ok) {
-    throw new Error('Unauthorized');
+    throw new AuthenticationError();
   }
 
   const body = await res.json();

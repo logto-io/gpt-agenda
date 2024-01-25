@@ -1,11 +1,12 @@
+import { handleErrors } from '@/utils/route';
 import { getItems, setItems } from '@/utils/storage';
 import { nanoid } from 'nanoid';
 
-export async function GET(request: Request) {
+export const GET = handleErrors(async (request: Request) => {
   return Response.json(await getItems(request));
-}
+});
 
-export async function POST(request: Request) {
+export const POST = handleErrors(async (request: Request) => {
   const items = await getItems(request);
   const body = await request.json();
   const item = { ...body, id: nanoid() };
@@ -14,4 +15,4 @@ export async function POST(request: Request) {
   await setItems(request, items);
 
   return Response.json(item);
-}
+});
