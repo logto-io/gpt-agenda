@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@logto/next": "^2.4.0",
+    "@logto/next": "^3.0.0",
     "@vercel/kv": "^1.0.1",
     "nanoid": "^5.0.4",
     "next": "14.1.1",
