@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.4.0
     version: 2.4.0(next@14.1.1)
   '@vercel/kv':
-    specifier: ^1.0.1
-    version: 1.0.1
+    specifier: ^2.0.0
+    version: 2.0.0
   nanoid:
     specifier: ^5.0.4
     version: 5.0.4
@@ -453,17 +453,17 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@upstash/redis@1.25.1:
-    resolution: {integrity: sha512-ACj0GhJ4qrQyBshwFgPod6XufVEfKX2wcaihsEvSdLYnY+m+pa13kGt1RXm/yTHKf4TQi/Dy2A8z/y6WUEOmlg==}
+  /@upstash/redis@1.31.3:
+    resolution: {integrity: sha512-KtVgWBUEx/LGbR8oRwYexwzHh3s5DNqYW0bjkD+gjFZVOnREJITvK+hC4PjSSD+8D4qJ+Xbkfmy8ANADZ9EUFg==}
     dependencies:
       crypto-js: 4.2.0
     dev: false
 
-  /@vercel/kv@1.0.1:
-    resolution: {integrity: sha512-uTKddsqVYS2GRAM/QMNNXCTuw9N742mLoGRXoNDcyECaxEXvIHG0dEY+ZnYISV4Vz534VwJO+64fd9XeSggSKw==}
+  /@vercel/kv@2.0.0:
+    resolution: {integrity: sha512-zdVrhbzZBYo5d1Hfn4bKtqCeKf0FuzW8rSHauzQVMUgv1+1JOwof2mWcBuI+YMJy8s0G0oqAUfQ7HgUDzb8EbA==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@upstash/redis': 1.25.1
+      '@upstash/redis': 1.31.3
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.11.3):
